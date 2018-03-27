@@ -26,24 +26,27 @@
                             fill: '#25669e'
                         },
                         onMouseMove: function(event) {
+                            var title = document.querySelector('#title');
+                            var empty = document.querySelector('.empty');
                             console.log('mouse on ' + this.region.name + ' (ident: ' + this.region.ident + ')');
-                            
-                            document.querySelector('#title').classList.remove('green-marker', 'red-marker');
-                            document.querySelector('.empty').classList.remove('red-marker2');
+                            title.classList.remove('green-marker', 'red-marker');
+                            empty.classList.remove('red-marker2');
                             if (project.indexOf(this.region.ident) !== -1) {
-                                document.querySelector('#title').classList.add('green-marker');
-                                document.querySelector('.empty').classList.add('red-marker2');
+                                title.classList.add('green-marker');
+                                empty.classList.add('red-marker2');
                             }
                             if (tander.indexOf(this.region.ident) !== -1) {
-                                document.querySelector('#title').classList.add('red-marker');
+                                title.classList.add('red-marker');
                             }                            
-                            document.querySelector('#title').textContent = this.region.name + ', ' + this.region.ident;
+                            title.textContent = this.region.name + ', ' + this.region.ident;
                         },
                         onMouseOut: function(event) {
+                            var title = document.querySelector('#title');
+                            var empty = document.querySelector('.empty');
                             console.log('out on ' + this.region.name + ' (ident: ' + this.region.ident + ')');
-                            document.querySelector('#title').textContent = '';
-                            document.querySelector('#title').classList.remove('green-marker', 'red-marker');
-                            document.querySelector('.empty').classList.remove('red-marker2');
+                            title.textContent = '';
+                            title.classList.remove('green-marker', 'red-marker');
+                            empty.classList.remove('red-marker2');
                         },
                         onMouseClick: function(event) {
                             console.log('clicked on ' + this.region.name);
