@@ -27,11 +27,23 @@
                         },
                         onMouseMove: function(event) {
                             console.log('mouse on ' + this.region.name + ' (ident: ' + this.region.ident + ')');
-                            document.querySelector('#title').textContent = this.region.name + ' ' + this.region.ident;
+                            
+                            document.querySelector('#title').classList.remove('green-marker', 'red-marker');
+                            document.querySelector('.empty').classList.remove('red-marker2');
+                            if (project.indexOf(this.region.ident) !== -1) {
+                                document.querySelector('#title').classList.add('green-marker');
+                                document.querySelector('.empty').classList.add('red-marker2');
+                            }
+                            if (tander.indexOf(this.region.ident) !== -1) {
+                                document.querySelector('#title').classList.add('red-marker');
+                            }                            
+                            document.querySelector('#title').textContent = this.region.name + ', ' + this.region.ident;
                         },
                         onMouseOut: function(event) {
                             console.log('out on ' + this.region.name + ' (ident: ' + this.region.ident + ')');
                             document.querySelector('#title').textContent = '';
+                            document.querySelector('#title').classList.remove('green-marker', 'red-marker');
+                            document.querySelector('.empty').classList.remove('red-marker2');
                         },
                         onMouseClick: function(event) {
                             console.log('clicked on ' + this.region.name);
@@ -44,11 +56,106 @@
 </head>
 <body>
 <style>
+    .info {
+        display: flex;
+        width: 100%;
+    }
+    .title-block {
+        display: flex;
+        width: 40%;
+        justify-content: flex-end;        
+    }
     #title {
         opacity: .8;
+        padding-right: 50px;
+        display: inline;
+    }
+    .empty {
+        opacity: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;        
+    }
+    .red-marker::before {
+        display: inline-block;
+        content: "";
+        margin-right: 5px;
+        margin-left: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: #f97979;
+        border-radius: 100%;
+        opacity: 1;
+    }
+
+    .red-marker2::before {
+        display: inline-block;
+        content: "";
+        margin-right: 0px;
+        margin-left: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: #f97979;
+        border-radius: 100%;
+        opacity: 1;
+        /* transform: translateY(45%); */
+    }
+
+    .green-marker::before {
+        display: inline-block;
+        content: "";
+        margin-right: 5px;
+        margin-left: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: #4abd73;
+        border-radius: 100%;
+        opacity: 1;
+    }
+    .legend {
+        display: flex;
+        width: 60%;
+        justify-content: flex-start;
+    }
+    .block {
+        display: inline-block;
+        margin-right: 25px;        
+    }
+    .color-block {
+        display: inline-block;
+        width: 20px;
+        height: 13px;
+        
+    }    
+    .green {
+        background-color: #4abd73;
+    }
+    .red{
+        background-color: #f97979;        
+    }
+    .block-title {
+        display: inline;
+        opacity: .75;
     }
 </style>
 <div id="russian-map"></div>
-<div id="title"></div>
+<div class="info">
+    <div class="title-block">
+        <div class="empty"></div>
+        <div id="title"></div>
+    </div>
+    <div class="legend">
+        <div class="block">
+            <div class="color-block green"></div>
+            <div class="block-title"> — регионы проекта</div>
+        </div>
+        <div class="block">
+            <div class="color-block red"></div>
+            <div class="block-title"> — регионы присутствия МагнитЭнерго</div>
+        </div>
+    </div>        
+</div>
+
+
 </body>
 </html>
