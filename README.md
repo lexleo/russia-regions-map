@@ -1,5 +1,7 @@
-# Карта России в SVG
+# Interactive map of Russia in SVG
 
-Демо: https://lexleo.github.io/russia-regions-map/
+![MAP-SVG](docs\assets\images\russia-map-svg.png)
 
-На основе: https://github.com/kalyabin/russian-map
+Demo: https://lexleo.github.io/russia-regions-map/
+
+Based on: https://github.com/kalyabin/russian-map
