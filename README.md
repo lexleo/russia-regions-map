@@ -1,6 +1,6 @@
 # Interactive map of Russia in SVG
 
-![MAP-SVG](docs\assets\images\russia-map-svg.png)
+![MAP-SVG](russia-map-svg.png)
 
 Demo: https://lexleo.github.io/russia-regions-map/
 
